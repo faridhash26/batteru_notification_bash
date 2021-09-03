@@ -12,7 +12,7 @@ check_interval=2
 
 while true; do
   battery_level=$(acpi -b | cut -d, -f2 | cut --characters=2,3,4 | sed 's/%//g')
-
+  #check the charging adapter
   charging=$(acpi -b | grep -c "Charging")
   # When battery is low, and not already charging
   if [ $battery_level -eq $warning_level ] && [ $charging -eq 0 ]
